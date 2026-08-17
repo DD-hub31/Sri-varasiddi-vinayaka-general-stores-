@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Varasiddi Vinayaka General Stores</title>
+<meta name="description" content="Sri Varasiddi Vinayaka General Stores - Grocery delivery in Uppada">
+<style>
+:root{--green:#075c32;--green2:#0b7a43;--cream:#fffaf0;--gold:#f5b72b;--red:#a83b20;--text:#173126}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f8f2;color:var(--text)}
+.top{background:var(--green);color:#fff;padding:9px 5%;display:flex;justify-content:space-between;gap:15px;font-size:14px;flex-wrap:wrap}
+header{background:var(--cream);padding:16px 5%;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0001}
+.logo{display:flex;align-items:center;gap:12px;min-width:280px}.ganesh{width:62px;height:62px;border-radius:50%;background:#f6c13a;display:grid;place-items:center;font-size:40px;border:3px solid #fff;box-shadow:0 2px 8px #0002}
+.logo h1{font-size:22px;margin:0;color:var(--green)}.logo p{margin:4px 0 0;color:var(--red);font-weight:bold}
+nav{display:flex;gap:18px;align-items:center;margin-left:auto}nav a{color:var(--text);text-decoration:none;font-weight:bold}
+.search{display:flex;max-width:400px;flex:1;margin-left:auto}.search input{width:100%;padding:13px;border:1px solid #ddd;border-radius:25px 0 0 25px;font-size:15px}.search button{border:0;background:var(--green);color:#fff;padding:0 20px;border-radius:0 25px 25px 0}
+.hero{padding:55px 6%;background:linear-gradient(90deg,#0a6035ee,#0a6035bb),url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1800&q=80') center/cover; color:#fff;min-height:330px;display:flex;align-items:center}
+.hero h2{font-size:48px;max-width:700px;margin:0 0 12px}.hero p{font-size:20px}.btn{display:inline-block;border:0;border-radius:25px;padding:13px 22px;background:var(--gold);color:#16351f;font-weight:bold;cursor:pointer;text-decoration:none}
+.container{max-width:1250px;margin:auto;padding:30px 5%}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.section-title h2{margin:0}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}.cat{background:#fff;padding:18px 10px;text-align:center;border-radius:14px;box-shadow:0 2px 8px #00000010;cursor:pointer}.cat span{font-size:30px;display:block;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}.card{background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px #00000010}.pic{height:145px;background:#eef4ed;border-radius:10px;display:grid;place-items:center;font-size:58px}.card h3{font-size:16px;margin:12px 0 5px}.price{font-size:18px;font-weight:bold;color:var(--green)}.card button{width:100%;margin-top:10px;background:var(--green2);color:#fff;border:0;border-radius:9px;padding:10px;font-weight:bold;cursor:pointer}
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}.offer{padding:22px;border-radius:15px;background:#fff0b8;border-left:6px solid var(--gold)}.offer:nth-child(2){background:#e1f4df;border-left-color:var(--green2)}
+.cartbox{position:fixed;right:20px;bottom:20px;background:#fff;width:min(370px,calc(100% - 40px));max-height:75vh;overflow:auto;padding:20px;border-radius:18px;box-shadow:0 10px 40px #0003;z-index:10;display:none}.cartbox.open{display:block}.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:10px 0}.qty button{padding:3px 8px}.wa{display:block;text-align:center;background:#20a954;color:#fff;padding:13px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:12px}
+.admin{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 10px #0001}.admin input,.admin select{padding:11px;border:1px solid #ddd;border-radius:8px;margin:5px}.admin button{padding:11px 15px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:bold}
+footer{background:#06452a;color:#fff;padding:35px 5%;margin-top:30px}.foot{max-width:1250px;margin:auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+@media(max-width:900px){header{flex-wrap:wrap}.search{order:3;flex-basis:100%;margin:0}nav{display:none}.hero h2{font-size:35px}.logo h1{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="top"><span>📍 Opp. Bank of India, Beach Road Centre, Uppada</span><span>🚚 Delivery Available</span><span>🕐 8 AM – 9 PM</span><span>📱 7799023133</span></div>
+<header>
+  <div class="logo"><div class="ganesh">🕉️</div><div><h1>Sri Varasiddi Vinayaka</h1><p>GENERAL STORES</p><small>Your Neighbourhood Grocery Store</small></div></div>
+  <nav><a href="#home">Home</a><a href="#products">Products</a><a href="#offers">Offers</a><a href="#admin">Manage</a></nav>
+  <div class="search"><input id="search" placeholder="Search rice, oil, biscuits..."><button onclick="render()">Search</button></div>
+  <button class="btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+</header>
+
+<section class="hero" id="home"><div><h2>Fresh Groceries Delivered to Your Doorstep!</h2><p>Quality • Freshness • Great Prices • Fast Local Delivery</p><a class="btn" href="#products">Shop Now →</a></div></section>
+
+<main class="container">
+<section><div class="section-title"><h2>🛍️ Shop by Category</h2></div><div class="categories" id="categories"></div></section>
+<section id="offers" style="margin-top:35px"><div class="section-title"><h2>🔥 Today's Offers</h2></div><div class="offers"><div class="offer"><h3>Get 5% OFF</h3><p>On orders above ₹1000</p></div><div class="offer"><h3>Fast Local Delivery</h3><p>Delivery available in Uppada and nearby areas.</p></div><div class="offer"><h3>Easy WhatsApp Ordering</h3><p>Choose products and send the order directly to WhatsApp.</p></div></div></section>
+<section id="products" style="margin-top:35px"><div class="section-title"><h2>⭐ Products</h2><span id="result"></span></div><div class="grid" id="productGrid"></div></section>
+
+<section id="admin" style="margin-top:45px"><div class="section-title"><h2>⚙️ Add / Manage Products</h2></div><div class="admin">
+<p>Add products here. They are saved in this browser using local storage.</p>
+<input id="pname" placeholder="Product name"><input id="pprice" type="number" placeholder="Price ₹"><input id="pcat" placeholder="Category"><input id="pemoji" placeholder="Emoji e.g. 🍚" maxlength="3">
+<button onclick="addProduct()">Add Product</button>
+<button onclick="resetProducts()" style="background:#a83b20">Reset Demo Products</button>
+</div></section>
+</main>
+
+<div class="cartbox" id="cartBox"><div class="section-title"><h2>🛒 Your Cart</h2><button onclick="toggleCart()">✕</button></div><div id="cartItems"></div><h3>Total: ₹<span id="total">0</span></h3><a class="wa" id="wa" target="_blank">💬 Place Order on WhatsApp</a><p><small>WhatsApp will open with your order details. Confirm delivery address with the shop.</small></p></div>
+
+<footer><div class="foot"><div><h2>🙏 Sri Varasiddi Vinayaka General Stores</h2><p>Your Neighbourhood Grocery Store</p></div><div><b>📍 Location</b><p>Opp. Bank of India, Beach Road Centre, Uppada</p></div><div><b>📞 Contact</b><p>7799023133<br>Open daily: 8 AM – 9 PM</p></div></div></footer>
+
+<script>
+const defaultProducts=[
+{name:"Aashirvaad Atta 5 kg",price:275,cat:"Rice & Grains",emoji:"🌾"},
+{name:"Fortune Sunflower Oil 1 L",price:145,cat:"Oils & Ghee",emoji:"🫗"},
+{name:"India Gate Basmati Rice 5 kg",price:599,cat:"Rice & Grains",emoji:"🍚"},
+{name:"Toor Dal 1 kg",price:120,cat:"Pulses & Dals",emoji:"🫘"},
+{name:"Tata Salt 1 kg",price:22,cat:"Groceries",emoji:"🧂"},
+{name:"Amul Butter 500 g",price:260,cat:"Dairy",emoji:"🧈"},
+{name:"Surf Excel 1 kg",price:180,cat:"Household",emoji:"🧺"},
+{name:"Biscuit Pack",price:40,cat:"Snacks & Biscuits",emoji:"🍪"},
+{name:"Milk 1 L",price:35,cat:"Dairy",emoji:"🥛"},
+{name:"Mixed Vegetables",price:80,cat:"Fruits & Vegetables",emoji:"🥦"}
+];
+let products=JSON.parse(localStorage.getItem("svv_products")||"null")||defaultProducts;
+let cart=JSON.parse(localStorage.getItem("svv_cart")||"[]");
+const cats=[["🍚","Rice & Grains"],["🫘","Pulses & Dals"],["🫗","Oils & Ghee"],["🌶️","Spices"],["🍪","Snacks & Biscuits"],["🥤","Beverages"],["🥛","Dairy"],["🥦","Fruits & Vegetables"],["🧺","Household"],["🧴","Personal Care"]];
+
+function renderCats(){document.getElementById("categories").innerHTML=cats.map(c=>`<div class="cat" onclick="filterCat('${c[1]}')"><span>${c[0]}</span>${c[1]}</div>`).join("")}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>(p.name+" "+p.cat).toLowerCase().includes(q));
+ document.getElementById("result").textContent=list.length+" products";
+ document.getElementById("productGrid").innerHTML=list.map((p,i)=>`<div class="card"><div class="pic">${p.emoji||"🛒"}</div><h3>${p.name}</h3><div class="price">₹${p.price}</div><small>${p.cat}</small><button onclick="addCart(${products.indexOf(p)})">Add to Cart</button></div>`).join("");
+}
+function filterCat(cat){document.getElementById("search").value=cat;render();document.getElementById("products").scrollIntoView({behavior:"smooth"})}
+function addCart(i){let p=products[i],x=cart.find(c=>c.name===p.name);if(x)x.qty++;else cart.push({...p,qty:1});save();updateCart()}
+function change(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);save();updateCart()}
+function save(){localStorage.setItem("svv_products",JSON.stringify(products));localStorage.setItem("svv_cart",JSON.stringify(cart))}
+function updateCart(){
+ document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-item"><div>${x.emoji} <b>${x.name}</b><br>₹${x.price} × ${x.qty}</div><div class="qty"><button onclick="change(${i},-1)">−</button><button onclick="change(${i},1)">+</button></div></div>`).join(""):"<p>Your cart is empty.</p>";
+ let total=cart.reduce((s,x)=>s+x.price*x.qty,0);document.getElementById("total").textContent=total;
+ let msg="Namaste Sri Varasiddi Vinayaka General Stores!%0A%0AI would like to order:%0A"+cart.map(x=>`• ${x.name} × ${x.qty} = ₹${x.price*x.qty}`).join("%0A")+`%0A%0ATotal: ₹${total}%0A%0AMy name:%0ADelivery address:`;
+ document.getElementById("wa").href="https://wa.me/917799023133?text="+msg;
+}
+function toggleCart(){document.getElementById("cartBox").classList.toggle("open")}
+function addProduct(){
+ let name=document.getElementById("pname").value.trim(),price=Number(document.getElementById("pprice").value),cat=document.getElementById("pcat").value.trim()||"Groceries",emoji=document.getElementById("pemoji").value.trim()||"🛒";
+ if(!name||!price)return alert("Enter product name and price.");
+ products.push({name,price,cat,emoji});save();render();alert("Product added!");
+ ["pname","pprice","pcat","pemoji"].forEach(id=>document.getElementById(id).value="")
+}
+function resetProducts(){if(confirm("Reset products to the demo list?")){products=[...defaultProducts];save();render()}}
+renderCats();render();updateCart();
+</script>
+</body>
+</html>
